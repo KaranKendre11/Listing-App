@@ -1,0 +1,51 @@
+#addbtn{
+position: relative;
+float: right;
+padding: 10px;
+}
+btn{
+    background-color: blue;
+}
+
+
+#emptbl{
+    
+  width: 100%;
+  height: 150px;
+  border: 3px solid green;
+  padding: 20px;
+  border: rgb(141, 128, 197);
+  border-radius: 25px;
+  border-collapse: collapse;
+  
+}
+thead{
+    height: 50px;
+    background-color: turquoise;
+    border-radius: 125px;
+    border-top-left-radius:16px;
+    border-style:ridge;
+}
+#edb{
+  padding-left: 15%;
+  width: auto;
+  height: 50px;
+}
+
+#sortbtn{
+  position: relative;
+  float: right;
+  border: none;
+  background-color: transparent;
+}
+#sortim{
+  height: 10px;
+}
+
+
+#pagibtn{
+  margin: auto;
+  width: 20%;
+  padding: 10px;
+  word-spacing: 10px;
+}

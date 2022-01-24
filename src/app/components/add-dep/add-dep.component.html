@@ -1,0 +1,9 @@
+<h3>Add Department</h3>
+<div id="form1">
+<form #addDep="ngForm" (ngSubmit)="addval(addDep.value)">
+    Name: <input type="text" ngModel name="department_name"/>
+    id:  <input type="text" ngModel name="department_id"/> &nbsp;
+    <button>Submit</button>
+</form>
+</div>
+

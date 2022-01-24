@@ -1,0 +1,10 @@
+
+<br><br>
+<div id = "editfrm">
+    <h3>Edit Details </h3> 
+    <form #editemp="ngForm" (ngSubmit)="editVal(editemp.value); editemp.reset();"  >
+        Name: <input type="text" ngModel name="name"/> &nbsp;<br> <br>
+        Age:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" ngModel name="age"/>  &nbsp;<br><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button>UPDATE</button> &nbsp;</form>
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button [routerLink] = "['/emp']">CANCEL</button>
+</div>

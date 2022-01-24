@@ -1,0 +1,25 @@
+<h3>Employee List</h3>
+  <div id="addbtn"> <nav> <button>
+        <a id= "btn" routerLinkActive ="active" routerLink="/add-emp">ADD</a></button></nav></div>
+<div>
+    <form #searchemp="ngForm" (ngSubmit)="searchval(searchemp.value)">
+        Name: <input type="text" ngModel name="name"/> &nbsp;
+        <button >Search</button>
+    </form>
+    <table id="emptbl" border="1" > 
+        <thead>
+            <th>Name <button id="sortbtn" (click) = "sortName()"><img id="sortim" [src]="sortImg"></button></th>
+             <th>Age<button id="sortbtn" (click)="sortAge()"><img id="sortim"[src]="sortImg"></button></th>
+            <th>Actions</th>
+        </thead>
+        <tr *ngFor="let employee of paginateArr; let i = index;"> 
+        <td>{{employee.name}}</td> 
+        <td>{{employee.age}}</td>
+        <td id="edb"><nav><a routeLinkActive="active" [routerLink]="['/edit-emp']"><button (click) = 'setVal(employee.name)'>Edit</button></a></nav><button (click) ="deleteData(employee.name)">Delete</button></td> 
+        </tr> 
+        </table>
+        <br><br>
+        <div id="pagibtn"><button style='margin-right:16px' (click)="firstpage()">FIRST</button><button style='margin-right:16px' (click)='prevpage()'>PREV</button><button style='margin-right:16px' (click)='nextpage()'>NEXT</button><button style='margin-right:16px' (click)='lastpage()'>LAST</button></div> 
+        <br><br>
+        
+</div> 
