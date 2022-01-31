@@ -1,44 +1,31 @@
 import { Component, OnInit } from '@angular/core';
+import { Employee } from 'src/app/Models/Employee';
+import { BaseAddEdit } from '../base.addEdit.component';
 
 @Component({
   selector: 'app-add-emp',
   templateUrl: './add-emp.component.html',
   styleUrls: ['./add-emp.component.css']
 })
-export class AddEmpComponent implements OnInit {
+//add base class
+export class AddEmpComponent extends BaseAddEdit<Employee>  implements OnInit {
 
-  constructor() { }
+  constructor() { 
+    super()
+  }
 
   ngOnInit(): void {
   }
 
-  addVal(val: any){
-    var myArr = new Array()
-    myArr = getData()
-    var isPresent = 0
-    for(var i=0;i<myArr.length;i++){
-      if(myArr[i].name === val.name){
-        isPresent = 1
-      }
-    }
-    if(isPresent == 0){
-     myArr.push(val)
-   localStorage.setItem("localData",JSON.stringify(myArr));  
-  }else{
-    alert("This Employee already exists")
-  }
-  }
-  }
-function getData() {
-  var str = localStorage.getItem("localData")
-    if(str != null){
-      var arr = JSON.parse(str)
-    }else{
-    var myArr = new Array()
-    localStorage.setItem("localData",JSON.stringify(myArr))
-    }
-    return arr;
   
-}
+  id = 0
+  addval(val: Employee){
+    val.id = this.id
+   this.addData(this.getData("empData"),val,"empData")
+   this.id += 1
+  }
+ 
+  }
+
 
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from 'src/app/Models/Employee';
+import { BaseAddEdit } from '../base.addEdit.component';
 import { BaseListing } from '../base.listing.component';
 
 @Component({
@@ -7,7 +8,7 @@ import { BaseListing } from '../base.listing.component';
   templateUrl: './edit-emp.component.html',
   styleUrls: ['./edit-emp.component.css']
 })
-export class EditEmpComponent extends BaseListing<Employee> implements OnInit {
+export class EditEmpComponent extends BaseAddEdit<Employee> implements OnInit {
 
 
   constructor() { 
@@ -18,14 +19,13 @@ export class EditEmpComponent extends BaseListing<Employee> implements OnInit {
     
   }
   valxx = JSON.stringify(localStorage.getItem("editData"))
-
   editVal(employee:Employee){
+    
     if(employee.name != "" && employee.age != null){
-    let employeeArray:Array<Employee> = this.getData("localData");
+    let employeeArray:Array<Employee> = this.getData("empData");
    // console.log(this.valxx)
-    this.editData(employeeArray,employee,"name",this.valxx)
-    localStorage.setItem("localData",JSON.stringify(employeeArray));
-    alert("Data Updated")
+    this.editData(employeeArray,employee,this.valxx,"empdata")
+   alert("Data Updated")
     }else{
       alert("Enter Valid Data")
     }

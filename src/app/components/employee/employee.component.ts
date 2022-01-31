@@ -33,7 +33,7 @@ export class EmployeeComponent
   sortImg = 'assets/sort_name.png'
  
   // THIS IS THE MAIN ARRAY
-  employeeArray:Array<Employee> = this.getData("localData");
+  employeeArray:Array<Employee> = this.getData("empData");
   
   
   // LOGIC FOR SEARCHING
@@ -46,33 +46,38 @@ export class EmployeeComponent
  
   // LOGIC FOR DELETING DATA
     deleteData(name:string){
-      this.deleteVal(this.employeeArray,name,"localData","name")
+      this.deleteVal(this.employeeArray,name,"empData","name")
       this.firstpage()
     }
   
 // LOGIC FOR SORTING DATA
-   sortName(){
-     this.employeeArray = this.sortArray(this.employeeArray,"name")
-     localStorage.setItem("localData",JSON.stringify(this.employeeArray))
+   nameAsc = false
+   ageAsc = false
+   sortarr(s: string){
+     if(s == "name"){
+    this.employeeArray =  this.sortArray(this.getData("empData"),s,this.nameAsc)
+     localStorage.setItem("empData",JSON.stringify(this.employeeArray))
+     if(this.nameAsc == false) this.nameAsc = true
+     else if(this.nameAsc == true) this.nameAsc = false
      this.firstpage()
+     }else{
+      this.employeeArray =  this.sortArray(this.getData("empData"),s,this.ageAsc)
+      localStorage.setItem("empData",JSON.stringify(this.employeeArray))
+      if(this.ageAsc == false) this.ageAsc = true
+      else if(this.ageAsc == true) this.ageAsc = false
+      this.firstpage()
+     }
    }
-   sortAge(){
-     
-    this.employeeArray = this.sortArray(this.employeeArray,"age")
-    localStorage.setItem("localData",JSON.stringify(this.employeeArray))
-    this.firstpage()
-   }
-
  
 
  //LOGIC FOR EDITING DATA
- editingName = ""
+ editingid = -1
  editVal(val:Employee){
  }
 // private router = Router
- setVal(val:string){
-   this.editingName = val
-   localStorage.setItem("editData",this.editingName)
+ setVal(val:number){
+   this.editingid = val
+   localStorage.setItem("editData",JSON.stringify(this.editingid))
  }
  
 

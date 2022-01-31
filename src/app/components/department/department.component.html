@@ -8,14 +8,14 @@
     </form>
     <table id="emptbl" border="1" > 
         <thead>
-            <th>Department name <button id="sortbtn" (click) = "sortName()"><img id="sortim" [src]="sortImg"></button></th>
-             <th>Department id<button id="sortbtn" (click)="sortid()"><img id="sortim"[src]="sortImg"></button></th>
+            <th>Department name <button id="sortbtn" (click) = "sortarr('department_name')"><img id="sortim" [src]="sortImg"></button></th>
+             <th>Department id<button id="sortbtn" (click)="sortarr('department_id')"><img id="sortim"[src]="sortImg"></button></th>
             <th>Actions</th>
         </thead>
         <tr *ngFor="let department of paginateArr; let i = index;"> 
         <td>{{department.department_name}}</td> 
         <td>{{department.department_id}}</td>
-        <td id="edb"><nav><a routeLinkActive="active" [routerLink]="['/edit-dep']"><button (click) = 'setVal(department.department_name)'>Edit</button></a></nav><button (click) ="deleteData(department.department_name)">Delete</button></td> 
+        <td id="edb"><nav><a routeLinkActive="active" [routerLink]="['/edit-dep']"><button (click) = 'setVal(department.id)'>Edit</button></a></nav><button (click) ="deleteData(department.department_name)">Delete</button></td> 
         </tr> 
         </table>
         <br><br>

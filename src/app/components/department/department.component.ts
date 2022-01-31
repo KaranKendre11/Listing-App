@@ -21,7 +21,7 @@ export class DepartmentComponent extends BaseListing<Department>
   }
 
   sortImg = 'assets/sort_name.png'
-  departmentArray:Array<Department> = this.getData("localData2")
+  departmentArray:Array<Department> = this.getData("depData")
 
   searchval(val:Department){
     var dep_name = val.department_name
@@ -33,33 +33,38 @@ export class DepartmentComponent extends BaseListing<Department>
 
   // LOGIC FOR DELETING DATA
   deleteData(name:string){
-    this.deleteVal(this.departmentArray,name,"localData2","department_name")
+    this.deleteVal(this.departmentArray,name,"depData","department_name")
     this.firstpage()
   }
 
 // LOGIC FOR SORTING DATA
- sortName(){
-   this.departmentArray = this.sortArray(this.departmentArray,"department_name")
-   localStorage.setItem("localData2",JSON.stringify(this.departmentArray))
-   this.firstpage()
- }
- sortid(){
-   
-  this.departmentArray = this.sortArray(this.departmentArray,"department_id")
-  localStorage.setItem("localData2",JSON.stringify(this.departmentArray))
-  this.firstpage()
- }
-
+   depnameAsc = false
+   depidAsc = false
+   sortarr(s: string){
+     if(s == "department_name"){
+    this.departmentArray =  this.sortArray(this.getData("depData"),s,this.depnameAsc)
+     localStorage.setItem("depData",JSON.stringify(this.departmentArray))
+     if(this.depnameAsc == false) this.depnameAsc = true
+     else if(this.depnameAsc == true) this.depnameAsc = false
+     this.firstpage()
+     }else{
+      this.departmentArray =  this.sortArray(this.getData("depData"),s,this.depidAsc)
+      localStorage.setItem("depData",JSON.stringify(this.departmentArray))
+      if(this.depidAsc == false) this.depidAsc = true
+      else if(this.depidAsc == true) this.depidAsc = false
+      this.firstpage()
+     }
+   }
 
 
 //LOGIC FOR EDITING DATA
-editingName = ""
+editingid = -1
 editVal(val:Department){
 }
 // private router = Router
-setVal(val:string){
- this.editingName = val
- localStorage.setItem("editData",this.editingName)
+setVal(val:number){
+ this.editingid = val
+ localStorage.setItem("editData",JSON.stringify(this.editingid))
 }
 
 
